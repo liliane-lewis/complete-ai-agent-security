@@ -1,0 +1,9 @@
+=== AirCorp Baggage Policy ===
+
+Carry-on baggage: 1 bag up to 10kg, max dimensions 55x40x20cm.
+Checked baggage: 1 bag up to 23kg included for Gold and Platinum members.
+Basic members: checked baggage charged at $30 per bag.
+Excess weight: $10 per kg over the limit.
+Prohibited items: liquids over 100ml, sharp objects, flammable materials.
+
+For questions contact: baggage@aircorp.com

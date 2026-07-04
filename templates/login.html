@@ -1,0 +1,210 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AirCorp ✈️ Employee Login</title>
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body {
+            font-family: Arial, sans-serif;
+            background: #f0f4f8;
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+        }
+
+        header {
+            background: #003580;
+            color: white;
+            padding: 16px 24px;
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+        header h1 { font-size: 1.4rem; }
+        header span { font-size: 0.85rem; opacity: 0.8; }
+
+        .login-container {
+            flex: 1;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 40px 16px;
+        }
+
+        .login-box {
+            background: white;
+            border-radius: 12px;
+            padding: 40px;
+            width: 100%;
+            max-width: 420px;
+            box-shadow: 0 4px 16px rgba(0,0,0,0.1);
+        }
+
+        .login-box h2 {
+            color: #003580;
+            margin-bottom: 8px;
+            font-size: 1.3rem;
+        }
+
+        .login-box p {
+            color: #666;
+            font-size: 0.88rem;
+            margin-bottom: 28px;
+        }
+
+        .form-group { margin-bottom: 18px; }
+
+        label {
+            display: block;
+            font-size: 0.88rem;
+            color: #333;
+            margin-bottom: 6px;
+            font-weight: bold;
+        }
+
+        input[type="text"],
+        input[type="password"] {
+            width: 100%;
+            padding: 12px 14px;
+            border: 2px solid #ddd;
+            border-radius: 8px;
+            font-size: 0.95rem;
+            outline: none;
+            transition: border-color 0.2s;
+        }
+
+        input:focus { border-color: #003580; }
+
+        .error {
+            background: #fdecea;
+            color: #c0392b;
+            padding: 10px 14px;
+            border-radius: 8px;
+            font-size: 0.88rem;
+            margin-bottom: 18px;
+            border-left: 3px solid #c0392b;
+        }
+
+        .login-btn {
+            width: 100%;
+            padding: 13px;
+            background: #003580;
+            color: white;
+            border: none;
+            border-radius: 8px;
+            font-size: 1rem;
+            font-weight: bold;
+            cursor: pointer;
+            margin-top: 8px;
+        }
+
+        .login-btn:hover { background: #002560; }
+
+        .hint {
+            margin-top: 24px;
+            padding: 14px;
+            background: #e8f0fe;
+            border-radius: 8px;
+            font-size: 0.82rem;
+            color: #333;
+            line-height: 1.8;
+        }
+
+        .hint strong { color: #003580; display: block; margin-bottom: 8px; }
+
+        .hint code {
+            background: #d0deff;
+            padding: 2px 6px;
+            border-radius: 4px;
+            font-family: monospace;
+        }
+
+        .tag-ad {
+            background: #003580;
+            color: white;
+            font-size: 0.68rem;
+            padding: 1px 6px;
+            border-radius: 10px;
+            font-weight: bold;
+            vertical-align: middle;
+            margin-left: 4px;
+        }
+
+        .tag-local {
+            background: #888;
+            color: white;
+            font-size: 0.68rem;
+            padding: 1px 6px;
+            border-radius: 10px;
+            font-weight: bold;
+            vertical-align: middle;
+            margin-left: 4px;
+        }
+
+        .hint .vuln-note {
+            margin-top: 10px;
+            padding-top: 10px;
+            border-top: 1px solid #c5d8fb;
+            color: #c0392b;
+            font-size: 0.78rem;
+        }
+    </style>
+</head>
+<body>
+
+<header>
+    <div>✈️</div>
+    <div>
+        <h1>AirCorp Airlines</h1>
+        <span>Employee Portal — Authenticated Access Only</span>
+    </div>
+</header>
+
+<div class="login-container">
+    <div class="login-box">
+        <h2>Employee Login</h2>
+        <p>Sign in with your corporate credentials.</p>
+
+        {% if error %}
+        <div class="error">⚠️ {{ error }}</div>
+        {% endif %}
+
+        <form method="POST">
+            <div class="form-group">
+                <label for="username">Username</label>
+                <input type="text" id="username" name="username"
+                       placeholder="e.g. ethompson" required autofocus>
+            </div>
+            <div class="form-group">
+                <label for="password">Password</label>
+                <input type="password" id="password" name="password"
+                       placeholder="Your password" required>
+            </div>
+            <button type="submit" class="login-btn">Sign In →</button>
+        </form>
+
+        <div class="hint">
+            <strong>🔑 Test accounts:</strong>
+            👤 <code>ethompson</code> / <code>Corp@123</code> — HR Manager
+            <span class="tag-ad">AD</span><br>
+            👤 <code>mtorres</code> / <code>Corp@123</code> — Finance Analyst
+            <span class="tag-ad">AD</span><br>
+            👤 <code>janderson</code> / <code>Corp@456</code> — IT Admin
+            <span class="tag-ad">AD</span><br>
+            👤 <code>svc_aircorp</code> / <code>AirCorp2024!</code> — Service Account
+            <span class="tag-ad">AD</span><br>
+            👤 <code>demo</code> / <code>demo123</code> — Demo User
+            <span class="tag-local">local</span>
+            <div class="vuln-note">
+                ⚠️ <strong>Security note:</strong>
+                <code>ethompson</code> and <code>mtorres</code> have passwords
+                exposed in their AD description field — intentional vulnerability for demo.
+            </div>
+        </div>
+    </div>
+</div>
+
+</body>
+</html>
